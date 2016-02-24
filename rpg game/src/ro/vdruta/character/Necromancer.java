@@ -5,7 +5,7 @@ package ro.vdruta.character;
 public class Necromancer extends Villain {
     public Necromancer(String name, int level){
         super(name, level);
-        health = 100 + level * 5;
+        health = 200 + level * 5;
         damage = 7 + level * 5;
     }
 }

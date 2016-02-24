@@ -7,10 +7,14 @@ public class Character {
     protected int level;
     protected int health;
     protected int damage;
+    private int id;
+    private static int idCount = 0;
 
     public Character(String name, int level){
         this.name = name;
         this.level = level;
+        this.id = idCount;
+        idCount++;
     }
 
     public String getName(){
@@ -29,6 +33,10 @@ public class Character {
         return damage;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setName(String name){
         this.name = name;
     }
@@ -45,4 +53,16 @@ public class Character {
         health -= value;
     }
 
+    public boolean equals (Object obj){
+        if (obj == null)
+            return false;
+        if (this == obj)
+            return true;
+        if (obj instanceof Character) {
+            Character anotherObj = (Character) obj;
+            if (this.getId() == anotherObj.getId())
+                return true;
+        }
+        return false;
+    }
 }
