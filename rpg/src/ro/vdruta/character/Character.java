@@ -1,4 +1,9 @@
 package ro.vdruta.character;
+
+import ro.vdruta.artefacts.Artefact;
+
+import java.util.ArrayList;
+
 /**
  * Created by MM on 2016-02-23.
  */
@@ -37,6 +42,8 @@ public class Character {
         return id;
     }
 
+
+
     public void setName(String name){
         this.name = name;
     }
@@ -64,5 +71,18 @@ public class Character {
                 return true;
         }
         return false;
+    }
+
+    public void printStats (){
+        System.out.print("Name: ");
+        System.out.print(name);
+        System.out.print(" ; Level: ");
+        System.out.print(level);
+        System.out.print(" ; Health: ");
+        System.out.print(health);
+        System.out.print(" ; Damage: ");
+        System.out.print(damage);
+        System.out.print(" ; Id: ");
+        System.out.println(id);
     }
 }

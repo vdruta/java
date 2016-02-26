@@ -1,0 +1,4 @@
+Level 3: Beat 13 goblins
+goblin
+13
+orc
