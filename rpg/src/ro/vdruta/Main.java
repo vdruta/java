@@ -1,23 +1,24 @@
 package ro.vdruta;
 
-import ro.vdruta.character.DarkMage;
-import ro.vdruta.character.Necromancer;
-import ro.vdruta.character.Orc;
+import ro.vdruta.models.Mission;
+import ro.vdruta.models.artefacts.Armor;
+import ro.vdruta.models.artefacts.Sword;
+import ro.vdruta.models.characters.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.SocketPermission;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+
 /**
  * Created by MM on 2016-02-23.
  */
-public class Main{
+public class Main {
     public static void main(String[] args) {
+
         Orc orc = new Orc("Largakh", 21);
         Mission mission;
         int i = 0;
@@ -35,7 +36,7 @@ public class Main{
         }
         orc.printStats();
 
-        //suicide mission :)
+        //Play missions until the end!
         while (orc.getHealth() > 0) {
             if (orc.getHealth() > 0) {
                 mission = new Mission("Level 1: Beat 7 goblins", "goblin", 7, orc);
@@ -74,41 +75,41 @@ public class Main{
             }
         }
 
+/*******************NEW MISSION : load *********************************/
+        System.out.println();
+        System.out.println("Create a new hero and try to give him 4 artefacts in the inventory:");
+        Knight knight = new Knight("Knight 1", 24);
+        /*Devil devil = new Devil("Devil", 4);
+        Goblin goblin = new Goblin("Goblin", 5);
+        Necromancer necromancer = new Necromancer("Necromance", 6);*/
 
-/*
-        System.out.println("Is " + orc.getName() + " a necromancer?");
-        System.out.println(orc.equals(necromancer) + "\n");
-
-        System.out.print("Orc Hero - Name: ");
-        System.out.print(orc.getName());
-        System.out.print(" ; Level: ");
-        System.out.print(orc.getLevel());
-        System.out.print(" ; Health: ");
-        System.out.print(orc.getHealth());
-        System.out.print(" ; Damage: ");
-        System.out.print(orc.getDamage());
-        System.out.print(" ; Id: ");
-        System.out.println(orc.getId());
-
-        System.out.print("Necromance Villain - Name: ");
-        System.out.print(necromancer.getName());
-        System.out.print(" ; Level: ");
-        System.out.print(necromancer.getLevel());
-        System.out.print(" ; Health: ");
-        System.out.print(necromancer.getHealth());
-        System.out.print("; Damage: ");
-        System.out.print(necromancer.getDamage());
-        System.out.print(" ; Id: ");
-        System.out.println(necromancer.getId());
-
-        System.out.println(orc.getName() + " attack " + necromancer.getName() + " :");
-        while (necromancer.getHealth() > 0) {
-            necromancer.receiveDamage(orc.getDamage());
-            if (necromancer.getHealth() > 0)
-                System.out.println(necromancer.getHealth());
-            else
-                System.out.println(necromancer.getName() + " died!");
+        knight.printStats();
+        try {
+            knight.addArtefact(new Armor("body helmet", 250));
+            knight.addArtefact(new Sword("big sword 1", 77));
+            knight.addArtefact(new Sword("big sword 2", 77));
+            knight.addArtefact(new Sword("big sword 3", 77));
         }
-*/
+        catch (Exception inventoryFull) {
+            System.out.println(inventoryFull.getMessage());
+        }
+        knight.printStats();
+        knight.printInventory();
+        System.out.println("Save hero to file hero.ser");
+        knight.saveHeroToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/hero.ser");
+        System.out.println("Load hero from file hero.ser");
+        knight = (Knight) Hero.readHeroFromFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/hero.ser");
+        knight.printStats();
+        knight.printInventory();
+        System.out.println("Load monsters from file for a specific map");
+        /*devil.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/devil.ser");
+        goblin.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/goblin.ser");
+        necromancer.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/necromancer.ser");*/
+        Mission mission2 = new Mission("Herro  vs villains from file", 7, knight);
+
+        /*******************NEW MISSION DONE *********************************/
+
+/*******************MVC *********************************/
+
     }
 }
