@@ -5,7 +5,7 @@ package ro.vdruta.models.characters;
 public class Mage extends Hero {
     public Mage(String name, int level){
         super(name, level);
-        health = 100 + level * 5;
+        health = 700 + level * 5;
         damage = 7 + level * 5;
     }
 }

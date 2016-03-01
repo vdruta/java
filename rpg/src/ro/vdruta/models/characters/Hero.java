@@ -4,6 +4,7 @@ import ro.vdruta.models.artefacts.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * Created by MM on 2016-02-23.
@@ -19,7 +20,9 @@ public class Hero extends Character implements ManageCharacter {
 
     @Override
     public void receiveDamage(int value) {
-            health -= value;
+        health -= value;
+        setChanged();
+        notifyObservers(value);
     }
 
     @Override

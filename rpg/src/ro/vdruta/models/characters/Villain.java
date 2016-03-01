@@ -16,6 +16,8 @@ public class Villain extends Character {
     @Override
     public void receiveDamage(int value) {
         health -= value;
+        this.setChanged();
+        this.notifyObservers(value);
     }
 
     @Override

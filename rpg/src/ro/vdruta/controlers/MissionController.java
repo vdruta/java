@@ -12,5 +12,11 @@ public class MissionController {
         this.mission = mission;
     }
 
+    public String getMissionName() {
+        return mission.getName();
+    }
 
+    public Mission getMission() {
+        return mission;
+    }
 }

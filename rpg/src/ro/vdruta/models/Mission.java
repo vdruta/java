@@ -1,6 +1,7 @@
 package ro.vdruta.models;
 
 import ro.vdruta.models.characters.*;
+import ro.vdruta.views.MissionView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,11 +10,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by MM on 2016-02-24.
  */
-public class Mission {
+public class Mission extends Observable{
     private String name;
     private int monstersCount;
     private Necromancer[] necromancers;
@@ -135,6 +138,11 @@ public class Mission {
             while (hero.getHealth() > 0 && necromancers[i].getHealth() > 0) {
                 System.out.println(hero.getName() + " hit " + necromancers[i].getName() + " with " + hero.getDamage() + " damage");
                 necromancers[i].receiveDamage(hero.getDamage());
+                try {
+                    Thread.sleep(1000);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
                 System.out.println(necromancers[i].getName() + " hit with " + necromancers[i].getDamage());
                 hero.receiveDamage(necromancers[i].getDamage());
             }

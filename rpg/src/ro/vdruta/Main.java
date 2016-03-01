@@ -4,6 +4,7 @@ import ro.vdruta.models.Mission;
 import ro.vdruta.models.artefacts.Armor;
 import ro.vdruta.models.artefacts.Sword;
 import ro.vdruta.models.characters.*;
+import ro.vdruta.views.MainFrame;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * Created by MM on 2016-02-23.
  */
 public class Main {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
         Orc orc = new Orc("Largakh", 21);
         Mission mission;
@@ -75,13 +76,13 @@ public class Main {
             }
         }
 
-/*******************NEW MISSION : load *********************************/
+
         System.out.println();
         System.out.println("Create a new hero and try to give him 4 artefacts in the inventory:");
         Knight knight = new Knight("Knight 1", 24);
-        /*Devil devil = new Devil("Devil", 4);
+        Devil devil = new Devil("Devil", 4);
         Goblin goblin = new Goblin("Goblin", 5);
-        Necromancer necromancer = new Necromancer("Necromance", 6);*/
+        Necromancer necromancer = new Necromancer("Necromance", 6);
 
         knight.printStats();
         try {
@@ -102,14 +103,44 @@ public class Main {
         knight.printStats();
         knight.printInventory();
         System.out.println("Load monsters from file for a specific map");
-        /*devil.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/devil.ser");
+        devil.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/devil.ser");
         goblin.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/goblin.ser");
-        necromancer.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/necromancer.ser");*/
+        necromancer.saveVillainToFile("C://Users/MM/IdeaProjects/javatraining/rpg/src/necromancer.ser");
         Mission mission2 = new Mission("Herro  vs villains from file", 7, knight);
 
-        /*******************NEW MISSION DONE *********************************/
 
-/*******************MVC *********************************/
 
     }
+*/
+        public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+        break;
+        }
+        }
+        } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        new MainFrame().setVisible(true);
+        }
+        });
+        }
 }

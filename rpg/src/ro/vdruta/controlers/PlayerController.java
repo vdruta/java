@@ -8,13 +8,8 @@ import ro.vdruta.models.Player;
 public class PlayerController {
     Player player;
 
-    public PlayerController(String username) {
-        player = new Player(username);
-    }
-
-
-    public void changeUsername(String newUsername) {
-        player.setUsername(newUsername);
+    public PlayerController(String username, String heroType, String heroName) {
+        player = new Player(username, heroType, heroName);
     }
 
     public Player getPlayer() {
