@@ -7,6 +7,9 @@ package ro.vdruta.views;
 
 import ro.vdruta.controlers.PlayerController;
 
+import javax.swing.*;
+import java.util.Observable;
+
 /**
  *
  * @author MM
@@ -111,10 +114,18 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        this.setContentPane(new MissionView(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextField2.getText()));
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        MissionView missionView = new MissionView(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextField2.getText());
+        this.setContentPane(missionView);
         this.revalidate();
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                missionView.missionViewStartMission();
+            }
+        });
+
     }
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {

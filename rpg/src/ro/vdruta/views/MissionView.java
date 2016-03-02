@@ -4,6 +4,7 @@ package ro.vdruta.views;/*
  * and open the template in the editor.
  */
 
+import ro.vdruta.Main;
 import ro.vdruta.controlers.MissionController;
 import ro.vdruta.controlers.PlayerController;
 import ro.vdruta.models.Mission;
@@ -39,6 +40,13 @@ public class MissionView extends javax.swing.JPanel implements Observer{
         initComponents();
     }
 
+    public void missionViewStartMission() {
+        missionController.getMission().fightHerovsNecromancer();
+        if (playerController.getPlayer().getHero().getHealth() > 0)
+            this.jTextArea1.append(playerController.getPlayer().getUsername() + " WIN! \nLevel UP");
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,9 +66,7 @@ public class MissionView extends javax.swing.JPanel implements Observer{
         jTextArea1.setRows(5);
         jTextArea1.setText("Will the hero win?\n");
         jTextArea1.append(" ... take a look in the console\n");
-        missionController.getMission().fightHerovsNecromancer();
-        if (playerController.getPlayer().getHero().getHealth() > 0)
-            this.jTextArea1.append(playerController.getPlayer().getUsername() + " WIN! \nLevel UP");
+
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -97,6 +103,7 @@ public class MissionView extends javax.swing.JPanel implements Observer{
         }
         if (o instanceof Villain)
             this.jTextArea1.append(missionController.getMission().getHero().getName() + " hit necromancer with " + arg + "\n");
+        this.revalidate();
     }
     // End of variables declaration
 }
